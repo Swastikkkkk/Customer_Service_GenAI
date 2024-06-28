@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>join meeting</title>
+    <style>
+    .list {
+        border: solid black 1px;
+        border-radius: 3px;
+
+  margin: 0 auto; /* Center the div horizontally */
+  padding: 1rem; /* Add some padding for breathing room */
+}
+
+.list form input[type="submit"] {
+  border-color: #ddd; /* Set a color for the submit button border */
+}
+
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; border: solid 1px; border-radius: 2px; padding-top: 15px; width:50%; margin-left:25%; margin-right:25%;">
+        Join 1 on 1 meetings with counsellors and therapists
+    </h1>
+<div class="list">
+<form action="{{ url_for('join') }}" method="post">
+    <ol>
+        <li>Trauma Recovery Therapy</li>
+        <li>Relationship Counseling</li>
+        <li>Career Stress</li>
+        <li>Academic Stress</li>
+        <li>Personal</li>
+    </ol>
+    Enter Therapy number Type:
+    <input type="number" id="A" name="number">
+    <input type="submit">
+    <br></br>
+    <a href="/chat">Back</a>
+</form>
+</div>
+</body>
+</html>

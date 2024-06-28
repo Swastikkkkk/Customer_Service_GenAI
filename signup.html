@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>SignUp</title>
+  <style>
+    html {
+  --s: 50px;
+  --c: #191b22;
+  --_s: calc(2*var(--s)) calc(2*var(--s));
+  --_g: 35.36% 35.36% at;
+  --_c: #0000 66%,#20222a 68% 70%,#0000 72%;
+  background: 
+    radial-gradient(var(--_g) 100% 25%,var(--_c)) var(--s) var(--s)/var(--_s), 
+    radial-gradient(var(--_g) 0 75%,var(--_c)) var(--s) var(--s)/var(--_s), 
+    radial-gradient(var(--_g) 100% 25%,var(--_c)) 0 0/var(--_s), 
+    radial-gradient(var(--_g) 0 75%,var(--_c)) 0 0/var(--_s), 
+    repeating-conic-gradient(var(--c) 0 25%,#0000 0 50%) 0 0/var(--_s), 
+    radial-gradient(var(--_c)) 0 calc(var(--s)/2)/var(--s) var(--s) var(--c);
+  background-attachment: fixed;
+}
+             .login-container {
+                        width: 300px;
+                        margin: 0 auto;
+                        padding: 30px;
+                        background-color: #ffffff;
+                        border-radius: 5px;
+                        box-shadow: 0 0 10px rgba(17, 22, 167, 0.334);
+                        margin-top: 25px; 
+                }
+
+                /* Add this to increase the size of the textboxes */
+                .login-container input[type="text"], .login-container input[type="password"] {
+                        width: 80%; /* Adjust as needed */
+                        padding: 10px /* Adjust as needed */
+                }
+
+                .gradient-text {
+                    background-image: linear-gradient(to right, #00FF40, #004953);
+                    margin-left: 100px;
+                    
+                    color: transparent;
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    animation: gradient 2s ease infinite;
+                    font-size: 5rem;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    letter-spacing: 0.2em;
+                    display: flex;
+                    align-items: center;
+                    
+                }
+                .submit {
+                background-color: blue;
+                border-radius: 15px;
+                border: 0;
+                box-sizing: border-box;
+                color: #eee;
+                cursor: pointer;
+                font-size: 18px;
+                height: 50px;
+                margin-top: 38px;
+  
+            text-align: center;
+            width: 100%;
+                }
+
+            .submit:active {
+                background-color: #06b;
+                }
+  </style>
+</head>
+
+<body>
+
+  <div id="emu">
+    <h1 class="gradient-text">Emu-tional</h1>
+  </div>
+
+
+
+
+  <div class="login-container">
+
+    <form action="/signup" method="post">
+
+      <label for="username">Username:</label><br>
+      <input type="text" id="username" name="username" required><br><br>
+
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password" minlength="6" required><br><br>
+
+      <label for="confirm-password">Confirm Password:</label>
+      <input type="password" id="confirm_password" minlength="6" name="signpass" required><br><br>
+      <script>
+        var password = document.getElementById("password")
+          , confirm_password = document.getElementById("confirm_password");
+
+        function validatePassword() {
+          if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+          } else {
+            confirm_password.setCustomValidity('');
+          }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+      </script>
+      <input type="submit" class="submit" value="Sign-Up"></input>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <p>{{message}}</p>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <p>Already have an account? <a href="login">Login</a></p>
+
+    </form>
+  </div>
+</body>
+
+</html>
