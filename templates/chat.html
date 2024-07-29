@@ -15,59 +15,76 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}" />
 	<style>
-		.dark{
+		.dark {
 			color: black;
 			font-weight: bold;
 		}
 	</style>
 </head>
+
 <body>
-<section id="ChatBot">
-	<div class="container-fluid h-100">
-		<div class="row justify-content-center h-100">
-			<div class="col-md-8 col-xl-6 chat">
-				<div class="card">
-					<div class="card-header msg_head">
-						<div class="d-flex bd-highlight">
-							<div class="img_cont">
-								<img src="https://i.ibb.co/cgcXKX5/logo.png" class="rounded-circle user_img">
-								<span class="online_icon"></span>
-							</div>
-							<div class="user_info">
-								<span>Emu-tional ChatBot</span>
-								<p>Sukh/Dukh ka Saathi</p>
+	<section id="ChatBot">
+		<div class="container-fluid h-100">
+			<div class="row justify-content-center h-100">
+				<div class="col-md-8 col-xl-6 chat">
+					<div class="card">
+						<div class="card-header msg_head">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://i.ibb.co/VH3zYYx/Screenshot-2024-07-29-170234.png"
+										class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>Customer Care</span>
+									<p style="color: black;">Available for help</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div id="messageFormeight" class="card-body msg_card_body">
+						<!--
+					this is the bot response section which will be appended by flask 
+					-->
+						<div id="messageFormeight" class="card-body msg_card_body">
 
 
-						<div class="d-flex justify-content-start mb-4">
+							<!-- <div class="d-flex justify-content-start mb-4">
 							<div class="img_cont_msg"><img
-									src="https://i.ibb.co/vP0Kkxc/image-processing20200616-22394-qqn1j6.png"
+									src="https://i.ibb.co/wdLHNxw/Screenshot-2024-07-29-170423.png"
 									class="rounded-circle user_img_msg"></div>
-						</div>
+									How can i help you?
+						</div> -->
 
-
-					</div>
-					<div class="card-footer">
-						<form id="messageArea" class="input-group">
-							<input type="text" id="text" name="msg"
-								placeholder="तुम इतना जोह मुस्कुरा रहे हो, क्या गम है जोह छुपा रहे हो ?"
-								autocomplete="off" class="form-control type_msg" required />
-							<div class="input-group-append">
-								<button type="button" id="volume" class="input-group-text volume_btn"><i
-										class="fas fa-volume-up"></i></button>
-								<button type="submit" id="send" class="input-group-text send_btn"><i
-										class="fas fa-location-arrow"></i></button>
+							<div class="d-flex justify-content-start mb-4">
+								<div class="img_cont_msg"><img
+										src="https://i.ibb.co/wdLHNxw/Screenshot-2024-07-29-170423.png"
+										class="rounded-circle user_img_msg"></div>
+								<div class="msg_cotainer">
+									How can i help you?
+								</div>
 							</div>
-						</form>
+
+
+						</div>
+						<div class="card-footer">
+							<!--
+					this is the user response section which will be appended by the user live 
+					-->
+							<form id="messageArea" class="input-group">
+								<input type="text" id="text" name="msg" placeholder="Ask a question" autocomplete="off"
+									class="form-control type_msg" required />
+								<div class="input-group-append">
+									<button type="button" id="volume" class="input-group-text volume_btn"><i
+											class="fas fa-volume-up"></i></button>
+									<button type="submit" id="send" class="input-group-text send_btn"><i
+											class="fas fa-location-arrow"></i></button>
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 	<script>
 		$(document).ready(function () {
 			// Function to speak the last response provided by the bot
@@ -76,7 +93,7 @@
 				var utterance = new SpeechSynthesisUtterance(lastResponse);
 				speechSynthesis.speak(utterance);
 			}
-	
+
 			// Event listener for the volume button click
 			$("#volume").on("click", function () {
 				speakLastResponse();
@@ -88,7 +105,7 @@
 				var userHtml =
 					'<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">' +
 					rawText +
-					'</div><div class="img_cont_msg"><img src="https://i.ibb.co/d5b84Xw/Untitled-design.png" class="rounded-circle user_img_msg"></div></div>';
+					'</div><div class="img_cont_msg"><img src="https://i.ibb.co/vL76nqv/Screenshot-2024-07-29-171434.png" class="rounded-circle user_img_msg"></div></div>';
 
 				$("#text").val("");
 				$("#messageFormeight").append(userHtml);
@@ -101,7 +118,7 @@
 					url: "/chat/get",
 				}).done(function (data) {
 					var botHtml =
-						'<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="https://i.ibb.co/vP0Kkxc/image-processing20200616-22394-qqn1j6.png" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">' +
+						'<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="https://i.ibb.co/wdLHNxw/Screenshot-2024-07-29-170423.png" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">' +
 						data +
 						'</div></div>';
 					$("#messageFormeight").append($.parseHTML(botHtml));
