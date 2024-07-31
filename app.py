@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session,flash
-from bot import get_Chat_response
+from chatbot import get_Chat_response
 
 app = Flask(__name__)
 app.secret_key = "ChatBotBOB_devansh"
