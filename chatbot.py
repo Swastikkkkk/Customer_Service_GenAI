@@ -2,12 +2,13 @@ import os
 from openai import AzureOpenAI
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 import json
+from translate import Translator
 
-endpoint = os.getenv("ENDPOINT_URL", "your endpoint")
-deployment = os.getenv("DEPLOYMENT_NAME", "deployment name")
-search_endpoint = os.getenv("SEARCH_ENDPOINT", "search_endpoint_name")
-search_key = os.getenv("SEARCH_KEY", "search_key")
-search_index = os.getenv("SEARCH_INDEX_NAME", "index")
+endpoint = os.getenv("ENDPOINT_URL", "https://devansh.openai.azure.com/")
+deployment = os.getenv("DEPLOYMENT_NAME", "devanshchatbot")
+search_endpoint = os.getenv("SEARCH_ENDPOINT", "https://devansh2266.search.windows.net")
+search_key = os.getenv("SEARCH_KEY", "YuyRwnoH9DSAsMGlRf2efIxdwHvfZ6PuB3DjH7Y1tjAzSeBNTDRk")
+search_index = os.getenv("SEARCH_INDEX_NAME", "devansh2266")
 
 token_provider = get_bearer_token_provider(
     DefaultAzureCredential(),
@@ -27,7 +28,7 @@ def get_Chat_response(Query):
     messages= [
     {
       "role": "user",
-      "content": Query+'. dont include the references from documents, dont include document names'
+      "content": Query+'. dont include document reference names'
     }],
     max_tokens=800,
     temperature=0,
@@ -41,7 +42,7 @@ def get_Chat_response(Query):
           "type": "azure_search",
           "parameters": {
             "endpoint": f"{search_endpoint}",
-            "index_name": "index",
+            "index_name": "devansh2266",
             "semantic_configuration": "default",
             "query_type": "simple",
             "fields_mapping": {},
@@ -61,5 +62,13 @@ def get_Chat_response(Query):
     newjson=completion.to_json()
     data=json.loads(newjson)
     newdata=data["choices"][0]["message"]["content"]
-    return newdata
+    newstr=str(newdata)
+    hindistr=translatedtext(newstr)
+    return newstr+" "+hindistr
 
+
+def translatedtext(texted):
+    translator=Translator(from_lang='en',to_lang='hi')
+    text=texted
+    translation=translator.translate(text)
+    return translation

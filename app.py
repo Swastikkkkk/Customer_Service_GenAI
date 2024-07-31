@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session,flash
+from flask import Flask, render_template, request, redirect, url_for
 from chatbot import get_Chat_response
 
 app = Flask(__name__)
