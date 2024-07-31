@@ -3,11 +3,11 @@ from openai import AzureOpenAI
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 import json
 
-endpoint = os.getenv("ENDPOINT_URL", "https://devansh.openai.azure.com/")
-deployment = os.getenv("DEPLOYMENT_NAME", "devanshchatbot")
-search_endpoint = os.getenv("SEARCH_ENDPOINT", "https://devansh2266.search.windows.net")
-search_key = os.getenv("SEARCH_KEY", "YuyRwnoH9DSAsMGlRf2efIxdwHvfZ6PuB3DjH7Y1tjAzSeBNTDRk")
-search_index = os.getenv("SEARCH_INDEX_NAME", "devansh2266")
+endpoint = os.getenv("ENDPOINT_URL", "your endpoint")
+deployment = os.getenv("DEPLOYMENT_NAME", "deployment name")
+search_endpoint = os.getenv("SEARCH_ENDPOINT", "search_endpoint_name")
+search_key = os.getenv("SEARCH_KEY", "search_key")
+search_index = os.getenv("SEARCH_INDEX_NAME", "index")
 
 token_provider = get_bearer_token_provider(
     DefaultAzureCredential(),
@@ -41,7 +41,7 @@ def get_Chat_response(Query):
           "type": "azure_search",
           "parameters": {
             "endpoint": f"{search_endpoint}",
-            "index_name": "devansh2266",
+            "index_name": "index",
             "semantic_configuration": "default",
             "query_type": "simple",
             "fields_mapping": {},
@@ -61,7 +61,5 @@ def get_Chat_response(Query):
     newjson=completion.to_json()
     data=json.loads(newjson)
     newdata=data["choices"][0]["message"]["content"]
-    newstr=str(newdata)
-    newstr.replace('[doc1]','')
-    return newstr
+    return newdata
 
