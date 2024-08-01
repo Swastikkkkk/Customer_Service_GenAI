@@ -28,7 +28,7 @@ def get_Chat_response(Query):
     messages= [
     {
       "role": "user",
-      "content": Query+'. dont include document reference names'
+      "content": Query+'. dont include document reference names, dont take reference name'
     }],
     max_tokens=800,
     temperature=0,
