@@ -1,4 +1,4 @@
-# Generative AI Customer Service Chatbot - README
+# Generative AI Customer Service Chatbot 
 ## Description:
 This project utilizes generative AI to create a chatbot that provides personalized, efficient, and proactive customer support. It aims to improve customer experience by offering features like:
 
