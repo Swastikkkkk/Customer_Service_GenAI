@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from chatbot import get_Chat_response
 
 app = Flask(__name__)
-app.secret_key = "ChatBotBOB_devansh"
+app.secret_key = ""
 
 @app.route("/")
 def index():
