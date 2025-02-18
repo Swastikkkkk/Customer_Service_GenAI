@@ -13,3 +13,5 @@ This project utilizes generative AI to create a chatbot that provides personaliz
 **Proactive Support :** Analyzes usage patterns to predict potential issues and proactively offer solutions or preventive maintenance suggestions.
 
 **Omnichannel Support :** Designed for integration across multiple channels like website chat, social media platforms, and messaging apps.
+
+# AZURE INTEGRATION AND FINE TUNING DONE ON AZURE GUI
