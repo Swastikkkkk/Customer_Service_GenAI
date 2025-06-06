@@ -14,4 +14,4 @@ This project utilizes generative AI to create a chatbot that provides personaliz
 
 **Omnichannel Support :** Designed for integration across multiple channels like website chat, social media platforms, and messaging apps.
 
-# AZURE INTEGRATION AND FINE TUNING DONE ON AZURE GUI
+# AZURE INTEGRATION AND FINE TUNING DONE ON AZURE GUI.
